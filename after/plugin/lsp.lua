@@ -39,6 +39,14 @@ lsp_zero.on_attach(function(client, bufnr)
 	vim.keymap.set("i", "<C-h>", function()
 		vim.lsp.buf.signature_help()
 	end, opts)
+	vim.keymap.set("n", "<leader>voi", function()
+		if vim.bo[0].filetype == "typescript" then
+			vim.lsp.buf.execute_command({
+				command = "_typescript.organizeImports",
+				arguments = { vim.fn.expand("%:p") },
+			})
+		end
+	end)
 end)
 
 require("mason").setup({})
