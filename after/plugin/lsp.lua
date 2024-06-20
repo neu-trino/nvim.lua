@@ -1,5 +1,7 @@
 local lsp_zero = require("lsp-zero")
 
+lsp_zero.setup_servers({ "dartls", force = true })
+
 lsp_zero.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false }
 
